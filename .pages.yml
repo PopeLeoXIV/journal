@@ -1,1 +1,20 @@
+content:
+  - name: diary
+    label: Diary entries
+    type: file
+    path: _data/entries.json
+    format: json
+    list: true
+    fields:
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
 
+      - name: body
+        label: Writing
+        type: text
+        required: true
