@@ -69,8 +69,18 @@ layout: null
   </head>
   <body>
     <main aria-label="Diary entries">
-      <!-- ENTRIES START -->
-      <!-- ENTRIES END -->
-    </main>
+  {% assign entries = site.data.entries | sort: "date" | reverse %}
+
+  {% for entry in entries %}
+    <article class="entry" aria-labelledby="entry-{{ forloop.index }}">
+      <time
+        id="entry-{{ forloop.index }}"
+        datetime="{{ entry.date | escape }}"
+      >{{ entry.date | date: "%d/%m/%Y" }}</time>
+
+      <p>{{ entry.body | escape | newline_to_br }}</p>
+    </article>
+  {% endfor %}
+</main>
   </body>
 </html>
